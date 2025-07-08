@@ -2,6 +2,7 @@ package study.datajpa.entity;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,6 +33,7 @@ public class Member {
         this.username = username;
     }
 
+    @Builder
     public Member(String username, int age, Team team) {
         this.username = username;
         this.age = age;
