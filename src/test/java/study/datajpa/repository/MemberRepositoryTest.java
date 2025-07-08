@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-import study.datajpa.dto.MemberDto;
 import study.datajpa.entity.Member;
 import study.datajpa.entity.Team;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -147,6 +147,29 @@ class MemberRepositoryTest {
 
     @Test
     void findMemberDto() {
+        Member m1 = Member.builder()
+                .username("AAA")
+                .age(10)
+                .build();
+
+        Member m2 = Member.builder()
+                .username("BBB")
+                .age(20)
+                .build();
+
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+
+        List<Member> result = memberRepository.findByNames(Arrays.asList("AAA", "BBB"));
+
+        for (Member member : result) {
+            System.out.println("member = " + member);
+        }
+
+    }
+
+    @Test
+    void findByNames() {
         Team team = new Team("teamA");
         Member m1 = Member.builder()
                 .username("AAA")
@@ -157,11 +180,5 @@ class MemberRepositoryTest {
 
         teamRepository.save(team);
         memberRepository.save(m1);
-
-        List<MemberDto> memberDto = memberRepository.findMemberDto();
-
-        for (MemberDto dto : memberDto) {
-            System.out.println("dto = " + dto);
-        }
     }
 }
