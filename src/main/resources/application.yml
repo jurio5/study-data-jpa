@@ -19,6 +19,12 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
 #        default_batch_fetch_size: 100
 #    open-in-view: true
+  data:
+    web:
+      pageable:
+        default-page-size: 10
+        max-page-size: 2000
+        one-indexed-parameters: true # 페이징 인덱스 1부터 시작, 사용 권장 X, 데이터가 맞지 않음
 
 logging:
   level:
