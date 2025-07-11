@@ -14,7 +14,7 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
-        #        show_sql: true // \uC774 \uBD80\uBD84\uC740 System.out \uC73C\uB85C \uCD9C\uB825\uB418\uAE30\uC5D0 \uAD8C\uC7A5\uCE58\uC54A\uC74C
+        #        show_sql: true
         format_sql: true
         dialect: org.hibernate.dialect.MySQL8Dialect
 #        default_batch_fetch_size: 100
